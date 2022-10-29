@@ -5,4 +5,7 @@ def index
   render({:template => "directors_template/index.html.erb"})
 end
 
+def eldest
+  render({:template => "directors_template/eldest.html.erb"})  
+end
 end
