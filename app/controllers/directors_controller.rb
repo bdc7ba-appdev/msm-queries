@@ -28,4 +28,24 @@ def youngest
 
   render({:template => "directors_template/youngest.html.erb"})  
 end
+
+def bio
+  @id = params.fetch("director_id")
+  @director_hash = Director.where({:id =>@id}).at(0)
+  @name = @director_hash.name
+  @dob = @director_hash.dob
+  @bio = @director_hash.bio
+  @image = @director_hash.image
+  @created = @director_hash.created_at.to_s
+  @created_date = Date.parse(@created)
+  @created_diff = ((Date.today - @created_date)/365).to_i
+
+  @updated = @director_hash.updated_at.to_s
+  @updated_date = Date.parse(@updated)
+  @updated_diff = ((Date.today - @updated_date)/365).to_i
+  # @updated
+
+  render({:template => "directors_template/bios.html.erb"})
+end
+
 end
