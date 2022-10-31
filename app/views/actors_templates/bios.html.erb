@@ -1,0 +1,89 @@
+<h1>Actor #<%=@id%> details</h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+<hr>
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=@name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=@dob%>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%=@bio%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%=@image%>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    about <%=@created_diff%> years ago
+    
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    about <%=@updated_diff%> years ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+
+<tr>
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+      Character name
+    </th>
+
+    <th>
+    </th>
+  </tr> 
+
+<% @list_of_characters.each do |a_thing| %>
+  <tr>
+    <td><%= Movie.where({:id => a_thing.movie_id}).at(0).title%></td>
+    <td><%= Movie.where({:id => a_thing.movie_id}).at(0).year%></td>
+    <%direct_id = Movie.where({:id => a_thing.movie_id}).at(0).director_id%>
+    <td><%= Director.where({:id => direct_id}).at(0).name%></td>
+    <td><%= a_thing.name%></td>
+    <td><a href = "/movies/<%=a_thing.movie_id%>">Show Details</a>
+    </td>
+<%end%>
+  </tr>
