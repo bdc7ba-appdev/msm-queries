@@ -1,7 +1,7 @@
 class DirectorsController < ApplicationController
 def index
   @list_of_directors  = Director.all
-
+  
   render({:template => "directors_template/index.html.erb"})
 end
 
@@ -43,6 +43,8 @@ def bio
   @updated = @director_hash.updated_at.to_s
   @updated_date = Date.parse(@updated)
   @updated_diff = ((Date.today - @updated_date)/365).to_i
+
+  @list_of_movies = Movie.where(:director_id => @id)
   # @updated
 
   render({:template => "directors_template/bios.html.erb"})

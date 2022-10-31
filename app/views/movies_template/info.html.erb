@@ -1,0 +1,57 @@
+<h1>Movie #<%=@id%> details</h1>
+
+<a href="/movies" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+<hr>
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%=@title%>
+  </dd>
+
+  <dt>
+    Year
+  </dt>
+  <dd>
+    <%=@year%>
+  </dd>
+
+  <dt>
+    Duration
+  </dt>
+  <dd>
+    <%=@duration%>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%=@description%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%=@image%>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    about <%=@created_diff%> years ago
+    
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    about <%=@updated_diff%> years ago
+  </dd>
+</dl>
